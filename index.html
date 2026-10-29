@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>ГринВолт — Голос Природы 2026</title>
+<style>
+:root{
+  --bg:#f4f7f2;
+  --ink:#152b1f;
+  --muted:#5f7a6b;
+  --line:#e2ebe3;
+  --card:#ffffff;
+  --lime:#7bd43a;
+  --lime-d:#5bb11f;
+  --teal:#0fa877;
+  --coral:#ff5a4d;
+  --coral-d:#f03d2f;
+  --sun:#ffb020;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{max-width:100%;overflow-x:hidden}
+body{
+  font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.5;min-height:100vh
+}
+.wrap{max-width:480px;margin:0 auto;padding:0 16px 56px}
+.nav{
+  position:sticky;top:0;z-index:20;margin:0 -16px;padding:14px 20px;
+  background:rgba(244,247,242,.85);backdrop-filter:blur(10px);
+  display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)
+}
+.brand{display:flex;align-items:center;gap:9px;font-weight:900;font-size:19px}
+.brand .mark{
+  width:32px;height:32px;border-radius:50%;
+  background:conic-gradient(from 210deg,var(--lime),var(--teal),var(--lime));
+  display:grid;place-items:center;font-size:16px
+}
+.live{
+  font-size:11px;font-weight:800;color:var(--coral-d);background:#ffe9e6;
+  padding:6px 12px;border-radius:30px;display:flex;align-items:center;gap:6px
+}
+.live b{width:7px;height:7px;border-radius:50%;background:var(--coral);display:inline-block;animation:bl 1.2s infinite}
+@keyframes bl{50%{opacity:.25}}
+
+.hero{position:relative;padding:34px 4px 8px;text-align:center}
+.kick{font-size:12px;font-weight:900;letter-spacing:1.5px;color:var(--teal);text-transform:uppercase}
+.hero h1{font-size:40px;line-height:1.02;font-weight:900;letter-spacing:-1.5px;margin:12px 0}
+.hero h1 em{font-style:normal;color:var(--lime-d)}
+.hero p{color:var(--muted);font-size:15px;max-width:330px;margin:0 auto}
+.count{display:flex;justify-content:center;gap:8px;margin:24px 0 6px}
+.cc{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 4px;min-width:64px;box-shadow:0 8px 20px rgba(21,43,31,.05)}
+.cc b{display:block;font-size:28px;font-weight:900;font-variant-numeric:tabular-nums;color:var(--ink)}
+.cc i{font-style:normal;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted)}
+.until{font-size:13px;color:var(--teal);font-weight:700;margin-top:10px}
+
+.btn{
+  display:block;width:100%;text-align:center;cursor:pointer;border:none;text-decoration:none;
+  background:linear-gradient(135deg,var(--coral),var(--coral-d));color:#fff;
+  font-weight:900;font-size:15px;letter-spacing:.3px;padding:17px;border-radius:16px;
+  box-shadow:0 12px 26px rgba(255,90,77,.3);text-transform:uppercase;
+  transition:transform .12s,box-shadow .12s
+}
+.btn:active{transform:translateY(2px) scale(.995);box-shadow:0 6px 16px rgba(255,90,77,.28)}
+.btn.ghost{background:#fff;color:var(--coral-d);border:2px solid var(--coral);box-shadow:none}
+.hero .btn{margin-top:20px}
+
+.hl{display:flex;align-items:center;gap:12px;margin:40px 0 18px}
+.hl .n{font-size:13px;font-weight:900;color:var(--lime-d);background:#eaf7df;width:30px;height:30px;border-radius:9px;display:grid;place-items:center}
+.hl h2{font-size:22px;font-weight:900;letter-spacing:-.5px}
+
+.prize{
+  background:linear-gradient(135deg,#132e20,#0c5a3f);color:#fff;border-radius:26px;
+  padding:26px 22px;position:relative;overflow:hidden;box-shadow:0 18px 40px rgba(12,90,63,.28)
+}
+.prize:after{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(123,212,58,.4),transparent 70%)}
+.prize .lab{font-size:12px;font-weight:900;letter-spacing:1px;color:var(--lime);text-transform:uppercase}
+.prize h3{font-size:26px;font-weight:900;margin:8px 0 2px;letter-spacing:-.5px}
+.prize .em{font-size:40px;margin-bottom:6px;display:block}
+.specs{list-style:none;margin-top:18px;display:grid;gap:11px;position:relative}
+.specs li{display:flex;gap:11px;align-items:center;font-size:14px}
+.specs li i{font-style:normal;width:30px;height:30px;flex:none;background:rgba(255,255,255,.12);border-radius:9px;display:grid;place-items:center}
+.specs li b{color:var(--lime)}
+
+.players{display:grid;gap:14px}
+.pl{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:0 8px 22px rgba(21,43,31,.05)}
+.pl .row{display:flex;align-items:center;gap:14px}
+.ava{width:58px;height:58px;flex:none;border-radius:20px;display:grid;place-items:center;font-size:25px;font-weight:900;color:#fff}
+.pl .meta{flex:1;min-width:0}
+.pl .rank{font-size:11px;font-weight:900;letter-spacing:.6px;color:var(--muted)}
+.pl .nm{font-size:18px;font-weight:900;letter-spacing:-.3px}
+.pl .rl{font-size:12.5px;color:var(--teal);font-weight:600}
+.pl .btn{margin-top:14px;padding:14px;font-size:14px}
+
+.bons{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.bn{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 8px 22px rgba(21,43,31,.05)}
+.bn .e{font-size:26px}
+.bn .t{font-weight:900;font-size:14px;margin-top:8px}
+.bn .d{font-size:12px;color:var(--muted);margin-top:3px}
+
+.steps{display:grid;gap:0;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 8px 22px rgba(21,43,31,.05)}
+.sp{display:flex;gap:14px;align-items:flex-start;padding:17px 18px;border-bottom:1px solid var(--line)}
+.sp:last-child{border-bottom:none}
+.sp .c{width:34px;height:34px;flex:none;border-radius:12px;background:linear-gradient(135deg,var(--lime),var(--teal));color:#fff;font-weight:900;display:grid;place-items:center}
+.sp .t{font-weight:900;font-size:15px}
+.sp .d{font-size:13px;color:var(--muted);margin-top:2px}
+
+.cta{margin-top:44px;background:linear-gradient(135deg,var(--lime),var(--teal));border-radius:26px;padding:32px 24px;text-align:center;color:#fff;box-shadow:0 18px 40px rgba(15,168,119,.3)}
+.cta h2{font-size:25px;font-weight:900;letter-spacing:-.5px}
+.cta p{font-size:14px;opacity:.92;margin:10px 0 20px}
+.cta .btn{background:#fff;color:var(--teal);box-shadow:0 10px 24px rgba(0,0,0,.14)}
+
+.foot{margin-top:44px;text-align:center}
+.foot .brand{justify-content:center}
+.foot .org{font-size:12.5px;color:var(--muted);margin-top:12px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="nav">
+    <div class="brand"><span class="mark">🌿</span>ГринВолт</div>
+    <div class="live"><b></b>Голосование идёт</div>
+  </div>
+
+  <header class="hero">
+    <div class="kick">Народный экоконкурс</div>
+    <h1>Голос <em>Природы</em> 2026</h1>
+    <p>Пять финалистов. Один супер-приз. Твой голос решает, кто станет экогероем года.</p>
+    <div class="count">
+      <div class="cc"><b id="d">00</b><i>дней</i></div>
+      <div class="cc"><b id="h">00</b><i>часов</i></div>
+      <div class="cc"><b id="m">00</b><i>минут</i></div>
+      <div class="cc"><b id="s">00</b><i>секунд</i></div>
+    </div>
+    <div class="until">⏳ До конца голосования · 25 ноября 2026, 23:59</div>
+    <a class="btn vote" href="#players">Выбрать фаворита</a>
+  </header>
+
+  <div class="hl"><span class="n">★</span><h2>Супер-приз</h2></div>
+  <div class="prize">
+    <span class="em">⚡</span>
+    <div class="lab">Главный приз сезона</div>
+    <h3>Электровелосипед «Voltwind X3»</h3>
+    <ul class="specs">
+      <li><i>🔋</i><div>Запас хода <b>90 км</b> на одном заряде</div></li>
+      <li><i>⚙️</i><div>Мотор <b>500 Вт</b>, до 45 км/ч</div></li>
+      <li><i>🪶</i><div>Алюминиевая рама, вес всего <b>17 кг</b></div></li>
+      <li><i>📱</i><div>Умный дисплей и GPS-трекер в комплекте</div></li>
+      <li><i>🎁</i><div>+ сертификат на эко-сервис <b>50 000 ₽</b></div></li>
+    </ul>
+  </div>
+
+  <div class="hl" id="players"><span class="n">5</span><h2>Финалисты</h2></div>
+  <div class="players">
+
+    <div class="pl">
+      <div class="row">
+        <div class="ava" style="background:linear-gradient(135deg,#7bd43a,#0fa877)">А</div>
+        <div class="meta"><div class="rank">ФИНАЛИСТ 01</div><div class="nm">Елена Подюкова</div><div class="rl">Городское озеленение</div></div>
+      </div>
+      <a class="btn vote" href="#">Проголосовать</a>
+    </div>
+
+    <div class="pl">
+      <div class="row">
+        <div class="ava" style="background:linear-gradient(135deg,#ffb020,#ff5a4d)">М</div>
+        <div class="meta"><div class="rank">ФИНАЛИСТ 02</div><div class="nm">Максим Соколов</div><div class="rl">Переработка отходов</div></div>
+      </div>
+      <a class="btn vote" href="#">Проголосовать</a>
+    </div>
+
+    <div class="pl">
+      <div class="row">
+        <div class="ava" style="background:linear-gradient(135deg,#19b6d9,#0fa877)">Д</div>
+        <div class="meta"><div class="rank">ФИНАЛИСТ 03</div><div class="nm">Дарья Кузнецова</div><div class="rl">Солнечная энергетика</div></div>
+      </div>
+      <a class="btn vote" href="#">Проголосовать</a>
+    </div>
+
+    <div class="pl">
+      <div class="row">
+        <div class="ava" style="background:linear-gradient(135deg,#9b6bff,#19b6d9)">Е</div>
+        <div class="meta"><div class="rank">ФИНАЛИСТ 04</div><div class="nm">Егор Лебедев</div><div class="rl">Защита лесов</div></div>
+      </div>
+      <a class="btn vote" href="#">Проголосовать</a>
+    </div>
+
+    <div class="pl">
+      <div class="row">
+        <div class="ava" style="background:linear-gradient(135deg,#ff6fa3,#ffb020)">П</div>
+        <div class="meta"><div class="rank">ФИНАЛИСТ 05</div><div class="nm">Полина Морозова</div><div class="rl">Экопросвещение детей</div></div>
+      </div>
+      <a class="btn vote" href="#">Проголосовать</a>
+    </div>
+
+  </div>
+
+  <div class="hl"><span class="n">🎁</span><h2>Бонусы всем</h2></div>
+  <div class="bons">
+    <div class="bn"><div class="e">🌱</div><div class="t">Эко-набор</div><div class="d">Бутылка и семена каждому голосующему</div></div>
+    <div class="bn"><div class="e">💳</div><div class="t">Промокод −20%</div><div class="d">Скидка в маркете «ГринВолт»</div></div>
+    <div class="bn"><div class="e">🎟️</div><div class="t">Розыгрыш</div><div class="d">10 сертификатов по 3 000 ₽</div></div>
+    <div class="bn"><div class="e">🌳</div><div class="t">Дерево в подарок</div><div class="d">1 дерево за каждые 100 голосов</div></div>
+  </div>
+
+  <div class="hl"><span class="n">→</span><h2>Как участвовать</h2></div>
+  <div class="steps">
+    <div class="sp"><span class="c">1</span><div><div class="t">Выберите фаворита</div><div class="d">Познакомьтесь с пятью финалистами</div></div></div>
+    <div class="sp"><span class="c">2</span><div><div class="t">Нажмите «Проголосовать»</div><div class="d">Один голос с устройства в сутки</div></div></div>
+    <div class="sp"><span class="c">3</span><div><div class="t">Поделитесь с друзьями</div><div class="d">Больше голосов — ближе супер-приз</div></div></div>
+    <div class="sp"><span class="c">4</span><div><div class="t">Следите за итогами</div><div class="d">Победителя назовём 26 ноября в эфире</div></div></div>
+  </div>
+
+  <div class="cta">
+    <h2>Твой голос решает 🌿</h2>
+    <p>Голосование скоро закроется. Поддержи своего экогероя прямо сейчас.</p>
+    <a class="btn vote" href="#players">Проголосовать</a>
+  </div>
+
+  <footer class="foot">
+    <div class="brand"><span class="mark">🌿</span>ГринВолт</div>
+    <div class="org">
+      Организатор: ООО «ГринВолт Медиа»<br>
+      г. Зелёноград, Экологический пр-т, 12
+    </div>
+  </footer>
+
+</div>
+
+<script>
+const VOTE_URL = "https://laughingatthemoonmovie.com/ie1xbtetrm6z0lwpv8up";
+
+document.querySelectorAll("a.btn.vote").forEach(function(a){
+  if(a.getAttribute("href")==="#"){ a.href = VOTE_URL; }
+  a.addEventListener("click", function(e){
+    const t = a.getAttribute("href");
+    if(t && t.indexOf("#")===0){
+      e.preventDefault();
+      document.querySelector(t).scrollIntoView({behavior:"smooth"});
+    }
+  });
+});
+
+const deadline = new Date("2026-11-25T23:59:59+02:00").getTime();
+const pad = n => String(n).padStart(2,"0");
+function tick(){
+  let diff = deadline - Date.now();
+  if(diff < 0) diff = 0;
+  document.getElementById("d").textContent = pad(Math.floor(diff/86400000));
+  document.getElementById("h").textContent = pad(Math.floor(diff%86400000/3600000));
+  document.getElementById("m").textContent = pad(Math.floor(diff%3600000/60000));
+  document.getElementById("s").textContent = pad(Math.floor(diff%60000/1000));
+}
+tick();
+setInterval(tick,1000);
+</script>
+</body>
+</html>
